@@ -27,3 +27,9 @@
     display: inline-block;
     vertical-align: middle;
 }
+.pb-50{
+    padding-bottom: 50px;
+}
+.pt-50{
+    padding-top: 50px;
+}

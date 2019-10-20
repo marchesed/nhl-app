@@ -1,13 +1,22 @@
 import React from 'react'
 import axios from 'axios';
 import Games from './Games';
+import DatePicker from './DatePicker'
 
 class NhlMain extends React.Component{
 
-    state = {
-        games: [],
-        logoData: {},
-        favouriteTeam: '',
+    
+    constructor(props){
+        super(props)
+        this.state = {
+            games: [],
+            logoData: {},
+            favouriteTeam: '',
+            days: [],
+            today: null
+        }
+        this.getGames = this.getGames.bind(this);
+        this.dateChange = this.dateChange.bind(this);
     }
 
     getGames(date){
@@ -16,7 +25,6 @@ class NhlMain extends React.Component{
         .then(res => {
             const games = res.data.dates[0].games
             this.setState({games})
-            console.log(this.state.games)
         })
     }
     getLogoData(){
@@ -24,10 +32,13 @@ class NhlMain extends React.Component{
         axios.get(url)
         .then(res => {
             const logoData = res.data
-            console.log('data',Object.keys(logoData))
             this.setState({logoData})
-            console.log(this.state.logoData)
         })
+    }
+    dateChange(){
+        var newDate = new Date(document.getElementById('exampleFormControlSelect1').value)
+        var formattedDate = newDate.getFullYear() + "-" + (newDate.getMonth()+1) + "-" + newDate.getDate()
+        this.getGames(formattedDate)
     }
 
     componentDidMount(){
@@ -35,20 +46,25 @@ class NhlMain extends React.Component{
         var today = new Date()
         var date = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate()
         this.getGames(date)
+        this.setState({'today': today})
+
+        var days = []
+        for (var i = -3;i<4;i++){
+            var nextDay = new Date(today);
+            nextDay.setDate(today.getDate()+i);
+            days.push(nextDay)
+        }
+        this.setState({'days': days})
         
     }
+
+    
 
     render(){
         return(
             <div>
                 <h1>Today's NHL Games</h1>
-                <select className="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
+                <DatePicker onChange={this.dateChange} />
                 <Games games={this.state.games} logoData={this.state.logoData} />
             </div>
         )
