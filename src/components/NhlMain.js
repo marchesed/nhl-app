@@ -13,10 +13,12 @@ class NhlMain extends React.Component{
             logoData: {},
             favouriteTeam: '',
             days: [],
-            today: null
+            today: null,
+            currentDate: new Date()
         }
         this.getGames = this.getGames.bind(this);
         this.dateChange = this.dateChange.bind(this);
+        this.refreshGames = this.refreshGames.bind(this);
     }
 
     getGames(date){
@@ -37,6 +39,7 @@ class NhlMain extends React.Component{
     }
     dateChange(){
         var newDate = new Date(document.getElementById('exampleFormControlSelect1').value)
+        this.setState({currentDate: newDate})
         var formattedDate = newDate.getFullYear() + "-" + (newDate.getMonth()+1) + "-" + newDate.getDate()
         this.getGames(formattedDate)
     }
@@ -57,6 +60,10 @@ class NhlMain extends React.Component{
         this.setState({'days': days})
         
     }
+    refreshGames(){
+        var formattedDate = this.state.currentDate.getFullYear() + "-" + (this.state.currentDate.getMonth()+1) + "-" + this.state.currentDate.getDate()
+        this.getGames(formattedDate)
+    }
 
     
 
@@ -64,6 +71,7 @@ class NhlMain extends React.Component{
         return(
             <div>
                 <h1>NHL</h1>
+                <button className='refresh-button' onClick={() => this.refreshGames()}>Refresh scores</button>
                 <DatePicker onChange={this.dateChange} />
                 <Games games={this.state.games} logoData={this.state.logoData} />
             </div>
