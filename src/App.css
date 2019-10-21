@@ -1,15 +1,7 @@
 body{
-  background: #ededed;
+  background: #ededed !important;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 h1{
   text-align: center;
-}
-.refresh-button{
-  margin: 10px auto;
-  position: relative;
-  display: block;
-  background: black;
-  color: white;
-  border-radius: 5px;
 }
