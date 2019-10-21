@@ -1,7 +1,17 @@
+.live-text{
+    background: lawngreen;
+    color: white;
+    width: 75px;
+    padding: 1px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 18px;
+}
 .game-box{
     background:white;
     padding: 10px;
-    margin: 10px;
+    margin: 10px auto;
     border-radius: 5px;
 }
 .game-text{

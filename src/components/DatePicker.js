@@ -1,4 +1,7 @@
 import React from 'react'
+import '../css/DatePicker.css'
+
+const months_en = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
 class DatePicker extends React.Component{
 
@@ -21,15 +24,19 @@ class DatePicker extends React.Component{
     render(){
         var daysList = this.state.days.map(day => {
             return day.getDate() === this.state.today.getDate() ? (
-                <option key={day.getDate()} value={day} selected='selected'>{day.getMonth()}/{day.getDate()}</option>
+                <option key={day.getDate()} value={day} selected='selected'>{months_en[day.getMonth()]} {day.getDate()} (today)</option>
             ) : (
-                <option key={day.getDate()} value={day}  >{day.getMonth()}/{day.getDate()}</option>
+                <option key={day.getDate()} value={day}>{months_en[day.getMonth()]} {day.getDate()}</option>
             )
         })
         return(
-        <select className="form-control" id="exampleFormControlSelect1" onChange={this.props.onChange}>
-            ({daysList})
-        </select>
+        <div className="date-box">
+            Date:&nbsp;
+            <select className="date-dropdown" id="exampleFormControlSelect1" onChange={this.props.onChange}>
+                ({daysList})
+            </select>
+        </div>
+       
         )
     }
 }
