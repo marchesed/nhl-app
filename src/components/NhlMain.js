@@ -63,7 +63,7 @@ class NhlMain extends React.Component{
     render(){
         return(
             <div>
-                <h1>Today's NHL Games</h1>
+                <h1>NHL</h1>
                 <DatePicker onChange={this.dateChange} />
                 <Games games={this.state.games} logoData={this.state.logoData} />
             </div>
