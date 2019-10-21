@@ -70,7 +70,7 @@ class NhlMain extends React.Component{
     render(){
         return(
             <div>
-                <h1>NHL</h1>
+                <h1>NHL Scores</h1>
                 <button className='refresh-button' onClick={() => this.refreshGames()}>Refresh scores</button>
                 <DatePicker onChange={this.dateChange} />
                 <Games games={this.state.games} logoData={this.state.logoData} />
