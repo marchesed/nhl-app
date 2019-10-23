@@ -18,7 +18,7 @@ const StandingsTable = ({standings}) => {
 
         return(
             <div>
-                <h2>{standing.division.name}</h2>
+                <h2>{standing.division.name} Division</h2>
                 <table>
                     <tr>
                         <th>Team</th>
