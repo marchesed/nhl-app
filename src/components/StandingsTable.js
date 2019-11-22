@@ -6,8 +6,8 @@ const StandingsTable = ({standings}) => {
     const standingsList = standings.map(standing => {
 
         const tableRows = standing.teamRecords.map(team => {
-            return(<tr>
-                <td>{team.divisionRank}&nbsp;{team.team.name}</td>
+            return(<tr key={team.id}>
+                <td className="team-name">{team.divisionRank}&nbsp;{team.team.name}</td>
                 <td>{team.gamesPlayed}</td>
                 <td>{team.leagueRecord.wins}</td>
                 <td>{team.leagueRecord.losses}</td>
@@ -20,15 +20,17 @@ const StandingsTable = ({standings}) => {
             <div>
                 <h2>{standing.division.name} Division</h2>
                 <table>
-                    <tr>
-                        <th>Team</th>
-                        <th>GP</th>
-                        <th>W</th>
-                        <th>L</th>
-                        <th>OT</th>
-                        <th>Points</th>
-                    </tr>
-                    {tableRows}
+                    <thead>
+                        <tr>
+                            <th>Team</th>
+                            <th>GP</th>
+                            <th>W</th>
+                            <th>L</th>
+                            <th>OT</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>{tableRows}</tbody>
                 </table>
             </div>
         )

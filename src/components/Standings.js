@@ -19,16 +19,13 @@ class Standings extends React.Component{
         axios.get(url)
         .then(res => {
             const standings = res.data.records
-            console.log('res',standings)
             this.setState({standings: standings})
-            console.log('state',this.state)
         })
     }
     componentDidMount(){
         this.getStandings()
     }
     render(){
-        console.log('hello',this.state.standings)
         return(<StandingsTable standings={this.state.standings} />)
     }
 }

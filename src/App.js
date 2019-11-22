@@ -13,7 +13,7 @@ function App() {
         <div>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <ul className="navbar-nav mr-auto">
-            <li><Link to={'/'} className="nav-link"> Home </Link></li>
+            <li><Link to={'/'} className="nav-link"> Scores </Link></li>
             <li><Link to={'/standings'} className="nav-link">Standings</Link></li>
           </ul>
           </nav>
