@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Standings from './components/Standings';
 
 function App() {
+  window.onscroll = function() {scrollFunction()};
   return (
     
     <div className="App">
@@ -26,6 +27,22 @@ function App() {
       </Router>
     </div>
   );
+}
+
+function scrollFunction() {
+  var navbar = document.getElementsByClassName("navbar")[0]
+  var sticky = navbar.offsetHeight;
+  
+  if(navbar && sticky) {
+    console.log(sticky,window.pageYOffset)
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky-navbar")
+      
+    } else {
+      navbar.classList.remove("sticky-navbar");
+    }
+  }
+  
 }
 
 export default App;
