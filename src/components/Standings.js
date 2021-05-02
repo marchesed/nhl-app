@@ -10,12 +10,11 @@ class Standings extends React.Component{
             standings: []
         }
         this.getStandings = this.getStandings.bind(this);
-        this.getStandings()
     }
 
     
     getStandings(){
-        var url = `https://statsapi.web.nhl.com/api/v1/standings?hydrate=record(overall),division,conference,team(nextSchedule(team),previousSchedule(team))&season=20192020`;
+        var url = `https://statsapi.web.nhl.com/api/v1/standings?hydrate=record(overall),division,conference,team(nextSchedule(team),previousSchedule(team))`;
         axios.get(url)
         .then(res => {
             const standings = res.data.records

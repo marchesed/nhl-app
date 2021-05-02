@@ -26,7 +26,7 @@ const StandingsTable = ({standings}) => {
                             <th>GP</th>
                             <th>W</th>
                             <th>L</th>
-                            <th>OT</th>
+                            <th>OTL</th>
                             <th>Points</th>
                         </tr>
                     </thead>
